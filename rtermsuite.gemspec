@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Damien Cram"]
   spec.email         = ["damien.cram@univ-nantes.fr"]
 
-  spec.summary       = %q{Rtermsuite is a JRuby wrapper for [TermSuite]}
-  spec.description   = %q{Rtermsuite is a JRuby wrapper for [TermSuite]}
+  spec.summary       = %q{A JRuby wrapper for TermSuite}
+  spec.description   = %q{Rtermsuite is a JRuby wrapper for TermSuite}
   spec.homepage      = "https://github.com/termsuite/rtermsuite"
   spec.license       = "Apache 2.0"
 
