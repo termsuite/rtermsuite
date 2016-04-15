@@ -41,7 +41,7 @@ Rtermsuite.configure do |config|
   config.treetagger_home= "/path/to/TreeTagger"
 end
 
-pip = Rtermsuite::Pipeline.new "fr"
+pip = Rtermsuite::Pipeline::TerminoExtractor.new "fr"
 corpus = Rtermsuite::Corpus.new "/path/to/corpus/"
 pip.run corpus
 termino = pip.term_index
