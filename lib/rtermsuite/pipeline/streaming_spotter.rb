@@ -60,9 +60,6 @@ module Rtermsuite
         end
       end
 
-      def ts_lang
-        Java::EuProjectTtcEnginesDesc::Lang.fromCode(@lang)
-      end
     end
   end
 end

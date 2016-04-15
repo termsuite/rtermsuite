@@ -11,10 +11,11 @@ module Rtermsuite
 
       require self.configuration.termsuite_jar
       require_relative "rtermsuite/version"
+      require_relative "rtermsuite/util"
       require_relative "rtermsuite/pipeline"
       require_relative "rtermsuite/corpus"
-      require_relative "rtermsuite/term_index"
       require_relative "rtermsuite/term"
+      require_relative "rtermsuite/term_index"
 
       if self.configuration.enable_logging
         Java::EuProjectTtcToolsCli::TermSuiteCLIUtils.setGlobalLogLevel(configuration.log_level.to_s)
