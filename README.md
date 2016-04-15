@@ -52,6 +52,32 @@ termino.sort_by(&:wr_log)[-10..-1].reverse.each do |term|
 end
 ```
 
+## Streaming API
+
+TermSuite 2.1 also ships with a beta-streaming API for spotted annotations.
+In Rtermsuite, this streaming API is wrapped as follows:
+
+``` ruby
+p = Rtermsuite::Pipeline::SpotterStream.new "fr"
+
+provider = p.stream do |ts_cas|
+  sdi = ts_cas.source_document_information
+  puts "Document processed: #{sdi.uri}"
+  puts "Nb word annotations: #{ts_cas.get_term_occ_annotations.count}"
+  i = 0
+  ts_cas.term_occ_annotations.each do |t|
+    break if (i+=1) > 10
+    puts "\t#{t.covered_text}[#{t.begin},#{t.end}]\t\tkey=> #{t.term_key}"
+  end
+end
+
+Dir["/home/cram-d/Corpora/wind-energy/French/txt/**/*"][0...5].each do |p|
+  provider.send_document(
+    uri: p,
+    text: IO.read(p)
+  )
+end
+```
 
 ## Development
 
