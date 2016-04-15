@@ -6,8 +6,10 @@ module Rtermsuite
     def_delegators :@ts_term, :frequency, :id, :lemma, :spotting_rule, :pattern,
                   :grouping_key, :general_frequency_norm, :frequency_norm,
                   :occurrences, :variations, :words, :compound?,
+                  :document_frequency,
                   :context_vector_computed?, :single_word?, :variant?
 
+    alias_method :dfreq, :document_frequency
     alias_method :freq, :frequency
     alias_method :freq_norm, :frequency_norm
     alias_method :gfreq_norm, :general_frequency_norm
