@@ -11,5 +11,9 @@ module Rtermsuite
       else Java::EuProjectTtcEnginesDesc::TermSuiteCollection::TXT
       end
     end
+
+    def ruby_term_index ts_term_index
+      Rtermsuite::TermIndex.new(ts_term_index)
+    end
   end
 end

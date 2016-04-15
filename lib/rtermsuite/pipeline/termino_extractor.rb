@@ -3,7 +3,7 @@ module Rtermsuite
     class TerminoExtractor
       include Util
 
-      def initialize lang, *args
+      def initialize lang
         @lang = lang
 
         @tsp = Java::EuProjectTtcTools::TermSuitePipeline.create(@lang, "file:")
@@ -28,7 +28,7 @@ module Rtermsuite
       end
 
       def term_index
-        Rtermsuite::TermIndex.new(@tsp.getTermIndex)
+        ruby_term_index @tsp.getTermIndex
       end
     end
   end
