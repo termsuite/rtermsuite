@@ -17,7 +17,7 @@ module Rtermsuite
 
       def stream &consumer_block
         java_provider = @tsp.stream(JRubyConsumer.new(consumer_block))
-        JRubyProvider.new(java_provider)
+        JRubyStream.new(java_provider)
       end
 
 
@@ -39,13 +39,17 @@ module Rtermsuite
         end
       end
 
-      class JRubyProvider
-        def initialize jprovider
-          @jprovider = jprovider
+      class JRubyStream
+        def initialize jstream
+          @jstream = jstream
         end
-        def send_document opts
-          @jprovider.provide JRubyDocument.new(opts)
+        def add_document opts
+          @jstream.add_document JRubyDocument.new(opts)
         end
+        def flush
+          @jstream.flush
+        end
+
       end
 
       class JRubyConsumer

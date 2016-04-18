@@ -60,7 +60,7 @@ In Rtermsuite, this streaming API is wrapped as follows:
 ``` ruby
 p = Rtermsuite::Pipeline::SpotterStream.new "fr"
 
-provider = p.stream do |ts_cas|
+stream = p.stream do |ts_cas|
   sdi = ts_cas.source_document_information
   puts "Document processed: #{sdi.uri}"
   puts "Nb word annotations: #{ts_cas.get_term_occ_annotations.count}"
@@ -72,11 +72,15 @@ provider = p.stream do |ts_cas|
 end
 
 Dir["/home/cram-d/Corpora/wind-energy/French/txt/**/*"][0...5].each do |p|
-  provider.send_document(
+  stream.add_document(
     uri: p,
     text: IO.read(p)
   )
 end
+
+# Waits for the pipeline to finish and closes the stream
+stream.flush
+
 ```
 
 ## Development
